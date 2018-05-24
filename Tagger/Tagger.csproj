@@ -123,6 +123,29 @@
     <Compile Include="Activation\SchemeActivationHandler.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask.cs" />
     <Compile Include="BackgroundTasks\BackgroundTaskSync.cs" />
+    <Compile Include="Common\GridLengths.cs" />
+    <Compile Include="Controls\Buttons\IconButton.cs" />
+    <Compile Include="Controls\Buttons\IconLabel.cs" />
+    <Compile Include="Controls\Buttons\IconLabelButton.cs" />
+    <Compile Include="Controls\Buttons\RoundButton.cs" />
+    <Compile Include="Controls\Details\Details.xaml.cs">
+      <DependentUpon>Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\FormAutoSuggestBox.cs" />
+    <Compile Include="Controls\Forms\FormCalendarDatePicker.cs" />
+    <Compile Include="Controls\Forms\FormComboBox.cs" />
+    <Compile Include="Controls\Forms\FormTextBox.cs" />
+    <Compile Include="Controls\Forms\FormTypes.cs" />
+    <Compile Include="Controls\Search\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Section\Section.cs" />
+    <Compile Include="Controls\Toolbars\DetailToolbar.xaml.cs">
+      <DependentUpon>DetailToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Toolbars\ToolbarCommon.cs" />
+    <Compile Include="Extensions\AnimationExtensions.cs" />
+    <Compile Include="Extensions\ICommandExtensions.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
@@ -132,30 +155,39 @@
     <Compile Include="Models\DragDropData.cs" />
     <Compile Include="Models\DragDropStartingData.cs" />
     <Compile Include="Models\SampleOrder.cs" />
-    <Compile Include="Services\ActivationService.cs" />
+    <Compile Include="Services\Infrastructure\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
-    <Compile Include="Services\BackgroundTaskService.cs" />
+    <Compile Include="Services\Infrastructure\BackgroundTaskService.cs" />
     <Compile Include="Services\DragAndDrop\DragDropService.cs" />
     <Compile Include="Services\DragAndDrop\DropConfiguration.cs" />
     <Compile Include="Services\DragAndDrop\ListViewDropConfiguration.cs" />
     <Compile Include="Services\DragAndDrop\VisualDropConfiguration.cs" />
-    <Compile Include="Services\FirstRunDisplayService.cs" />
-    <Compile Include="Services\NavigationServiceEx.cs" />
-    <Compile Include="Services\OnBackgroundEnteringEventArgs.cs" />
+    <Compile Include="Services\Infrastructure\FirstRunDisplayService.cs" />
+    <Compile Include="Services\Infrastructure\NavigationServiceEx.cs" />
+    <Compile Include="Services\Infrastructure\OnBackgroundEnteringEventArgs.cs" />
     <Compile Include="Services\SampleDataService.cs" />
-    <Compile Include="Services\SuspendAndResumeService.cs" />
-    <Compile Include="Services\SuspensionState.cs" />
-    <Compile Include="Services\ThemeSelectorService.cs" />
-    <Compile Include="Services\ToastNotificationsService.cs" />
-    <Compile Include="Services\ToastNotificationsService.Samples.cs" />
-    <Compile Include="Services\ViewLifetimeControl.cs" />
-    <Compile Include="Services\WhatsNewDisplayService.cs" />
-    <Compile Include="Services\WindowManagerService.cs" />
+    <Compile Include="Services\Infrastructure\SuspendAndResumeService.cs" />
+    <Compile Include="Services\Infrastructure\SuspensionState.cs" />
+    <Compile Include="Services\Infrastructure\ThemeSelectorService.cs" />
+    <Compile Include="Services\Infrastructure\ToastNotificationsService.cs" />
+    <Compile Include="Services\Infrastructure\ToastNotificationsService.Samples.cs" />
+    <Compile Include="Services\Infrastructure\ViewLifetimeControl.cs" />
+    <Compile Include="Services\Infrastructure\WhatsNewDisplayService.cs" />
+    <Compile Include="Services\Infrastructure\WindowManagerService.cs" />
+    <Compile Include="Tools\BitmapTools.cs" />
+    <Compile Include="Tools\DependencyExpressions\DependencyExpression.cs" />
+    <Compile Include="Tools\DependencyExpressions\DependencyExpressions.cs" />
+    <Compile Include="Tools\DependencyExpressions\INotifyExpressionChanged.cs" />
+    <Compile Include="Tools\ElementSet\ElementExtensions.cs" />
+    <Compile Include="Tools\ElementSet\ElementSet.cs" />
+    <Compile Include="Tools\ElementSet\ElementSet.Events.cs" />
+    <Compile Include="Tools\ElementSet\ElementSet.Methods.cs" />
+    <Compile Include="Tools\ElementSet\ElementSet.Properties.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\TagManagerViewModel.cs" />
+    <Compile Include="ViewModels\Tags\TagManagerViewModel.cs" />
     <Compile Include="ViewModels\UriSchemeExampleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\FirstRunDialog.xaml.cs">
@@ -173,10 +205,10 @@
     <Compile Include="Views\ShellPage.xaml.cs">
       <DependentUpon>ShellPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TagManagerDetailControl.xaml.cs">
+    <Compile Include="Views\Tags\TagManagerDetailControl.xaml.cs">
       <DependentUpon>TagManagerDetailControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TagManagerPage.xaml.cs">
+    <Compile Include="Views\Tags\TagManagerPage.xaml.cs">
       <DependentUpon>TagManagerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UriSchemeExamplePage.xaml.cs">
@@ -193,7 +225,51 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Details\Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Search\Search.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Toolbars\DetailToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CalendarPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Cards.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\NavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\PivotHeaderItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Sections.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -237,11 +313,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\TagManagerDetailControl.xaml">
+    <Page Include="Views\Tags\TagManagerDetailControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\TagManagerPage.xaml">
+    <Page Include="Views\Tags\TagManagerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -263,7 +339,9 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
     <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Infrastructure\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -284,6 +362,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tagger.Entities\Tagger.Entities.csproj">
+      <Project>{7D08EE46-7C95-443C-9792-5535F6508214}</Project>
+      <Name>Tagger.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

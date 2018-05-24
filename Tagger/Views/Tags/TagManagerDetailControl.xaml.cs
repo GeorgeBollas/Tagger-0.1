@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Tagger.Entities.Tags;
 using Tagger.Models;
 
 using Windows.UI.Xaml;
@@ -9,9 +9,9 @@ namespace Tagger.Views
 {
     public sealed partial class TagManagerDetailControl : UserControl
     {
-        public SampleOrder MasterMenuItem
+        public TagType MasterMenuItem
         {
-            get { return GetValue(MasterMenuItemProperty) as SampleOrder; }
+            get { return GetValue(MasterMenuItemProperty) as TagType; }
             set { SetValue(MasterMenuItemProperty, value); }
         }
 
