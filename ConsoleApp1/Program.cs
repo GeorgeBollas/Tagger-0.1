@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tagger.Services.Data
+namespace ConsoleApp1
 {
-    public interface ITagsData
+    class Program
     {
-
+        static void Main(string[] args)
+        {
+        }
     }
 }

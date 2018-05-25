@@ -6,23 +6,22 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 
 using Microsoft.Toolkit.Uwp.UI.Controls;
-
-using Tagger.Models;
+using Tagger.Entities;
 using Tagger.Services;
 
 namespace Tagger.ViewModels
 {
     public class TagManagerViewModel : ViewModelBase
     {
-        private SampleOrder _selected;
+        private TagType _selected;
 
-        public SampleOrder Selected
+        public TagType Selected
         {
             get { return _selected; }
             set { Set(ref _selected, value); }
         }
 
-        public ObservableCollection<SampleOrder> SampleItems { get; private set; } = new ObservableCollection<SampleOrder>();
+        public ObservableCollection<TagType> TagTypes { get; private set; } = new ObservableCollection<TagType>();
 
         public TagManagerViewModel()
         {
@@ -30,19 +29,19 @@ namespace Tagger.ViewModels
 
         public async Task LoadDataAsync(MasterDetailsViewState viewState)
         {
-            SampleItems.Clear();
+            //TagTypes.Clear();
 
-            var data = await SampleDataService.GetSampleModelDataAsync();
+            //var data = await SampleDataService.GetSampleModelDataAsync();
 
-            foreach (var item in data)
-            {
-                SampleItems.Add(item);
-            }
+            //foreach (var item in data)
+            //{
+            //    TagTypes.Add(item);
+            //}
 
-            if (viewState == MasterDetailsViewState.Both)
-            {
-                Selected = SampleItems.First();
-            }
+            //if (viewState == MasterDetailsViewState.Both)
+            //{
+            //    Selected = TagTypes.First();
+            //}
         }
     }
 }

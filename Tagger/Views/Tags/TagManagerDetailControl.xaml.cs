@@ -1,5 +1,5 @@
 ﻿using System;
-using Tagger.Entities.Tags;
+using Tagger.Entities;
 using Tagger.Models;
 
 using Windows.UI.Xaml;
@@ -15,7 +15,7 @@ namespace Tagger.Views
             set { SetValue(MasterMenuItemProperty, value); }
         }
 
-        public static readonly DependencyProperty MasterMenuItemProperty = DependencyProperty.Register("MasterMenuItem", typeof(SampleOrder), typeof(TagManagerDetailControl), new PropertyMetadata(null, OnMasterMenuItemPropertyChanged));
+        public static readonly DependencyProperty MasterMenuItemProperty = DependencyProperty.Register("MasterMenuItem", typeof(TagType), typeof(TagManagerDetailControl), new PropertyMetadata(null, OnMasterMenuItemPropertyChanged));
 
         public TagManagerDetailControl()
         {

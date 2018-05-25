@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tagger.Data\Tagger.Data.csproj" />
     <ProjectReference Include="..\Tagger.Entities\Tagger.Entities.csproj" />
   </ItemGroup>
 

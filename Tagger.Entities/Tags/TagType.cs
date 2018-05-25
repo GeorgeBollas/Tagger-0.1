@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tagger.Entities.Tags
+namespace Tagger.Entities
 {
     public class TagType:EntityBase
     {
-        [Required]
-        [MinLength(2)]
-        [MaxLength(100)]
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        //todo move to extension or something
+        public string SearchTerms { get { return Name + Description; } }
+
+        public ICollection<Tag> Tags { get; set; }
     }
 }

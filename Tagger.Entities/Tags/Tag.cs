@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tagger.Entities.Tags
+namespace Tagger.Entities
 {
     public class Tag: EntityBase
     {

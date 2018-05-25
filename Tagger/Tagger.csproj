@@ -365,8 +365,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tagger.Entities\Tagger.Entities.csproj">
-      <Project>{7D08EE46-7C95-443C-9792-5535F6508214}</Project>
+      <Project>{855CD18C-DC5F-488D-B33F-9E735A3B11CB}</Project>
       <Name>Tagger.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tagger.Services\Tagger.Services.csproj">
+      <Project>{ac9026f1-c03b-4fba-bfe2-16b4af679365}</Project>
+      <Name>Tagger.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
