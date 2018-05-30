@@ -38,6 +38,7 @@ namespace Tagger
         protected override async void OnActivated(IActivatedEventArgs args)
         {
             await ActivationService.ActivateAsync(args);
+
         }
 
         private ActivationService CreateActivationService()

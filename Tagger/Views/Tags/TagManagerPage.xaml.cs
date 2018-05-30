@@ -1,7 +1,9 @@
 ﻿using System;
 
 using Tagger.ViewModels;
-
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 

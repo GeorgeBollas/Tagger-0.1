@@ -250,4 +250,8 @@ Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Ma
     <value>What's new in this version</value>
     <comment>What's new prompt message title</comment>
   </data>
+  <data name="Shell_EditTagType.Content" xml:space="preserve">
+    <value>EditTagType</value>
+    <comment>Navigation view item name for EditTagType</comment>
+  </data>
 </root>

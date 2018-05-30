@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TagDocs.Data
+namespace TagDocs.Services
 {
     static class UIDGenerator
     {

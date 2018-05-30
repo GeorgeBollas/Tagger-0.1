@@ -4,6 +4,8 @@ using CommonServiceLocator;
 
 using GalaSoft.MvvmLight.Ioc;
 
+using Tagger.Data;
+using Tagger.Data.Sql;
 using Tagger.Services;
 using Tagger.Views;
 
@@ -11,18 +13,32 @@ namespace Tagger.ViewModels
 {
     public class ViewModelLocator
     {
+        //todo fix this hack
+        static bool isInitialized = false;
         public ViewModelLocator()
         {
+            if (isInitialized) return;
+
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
+            SimpleIoc.Default.Register<ITaggerDataContext, TaggerDataContext>();
+            SimpleIoc.Default.Register<ITagsService, TagsService>();
+
 
             SimpleIoc.Default.Register(() => new NavigationServiceEx());
             SimpleIoc.Default.Register<ShellViewModel>();
+
             Register<MainViewModel, MainPage>();
             Register<TagManagerViewModel, TagManagerPage>();
             Register<SearchViewModel, SearchPage>();
             Register<SettingsViewModel, SettingsPage>();
             Register<UriSchemeExampleViewModel, UriSchemeExamplePage>();
+
+            Register<EditTagTypeViewModel,EditTagTypePage>();
+            isInitialized = true;
         }
+
+        public EditTagTypeViewModel EditTagTypeViewModel => ServiceLocator.Current.GetInstance<EditTagTypeViewModel>();
 
         public UriSchemeExampleViewModel UriSchemeExampleViewModel => ServiceLocator.Current.GetInstance<UriSchemeExampleViewModel>();
 

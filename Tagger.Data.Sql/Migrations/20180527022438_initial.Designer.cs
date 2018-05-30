@@ -12,7 +12,7 @@ using Tagger.Entities;
 namespace Tagger.Data.Sql.Migrations
 {
     [DbContext(typeof(TaggerDataContext))]
-    [Migration("20180525104143_initial")]
+    [Migration("20180527022438_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

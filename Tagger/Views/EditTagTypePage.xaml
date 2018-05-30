@@ -1,0 +1,29 @@
+﻿<Page xmlns:my="using:Telerik.UI.Xaml.Controls.Input" 
+    x:Class="Tagger.Views.EditTagTypePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding EditTagTypeViewModel, Source={StaticResource Locator}}"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="ContentArea"
+        Margin="{StaticResource MediumLeftRightMargin}">
+        <StackPanel Orientation="Vertical"
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.-->
+            <TextBox Text="{x:Bind ViewModel.Name, Mode=TwoWay}" PlaceholderText="Name" />
+            <TextBox Text="{x:Bind ViewModel.Description, Mode=TwoWay}" PlaceholderText="Description" />
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <my:RadNumericBox Minimum="0" Maximum="100" Value="{x:Bind ViewModel.MinCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Minimum" />
+                <my:RadNumericBox Grid.Column="1" Minimum="0" Maximum="100" Value="{x:Bind ViewModel.MaxCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Maximum" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -40,7 +40,15 @@
     </Page.Resources>
 
     <Grid x:Name="ContentArea">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar>
+            <AppBarButton Command="{x:Bind ViewModel.CreateTagTypeCommand}" Content="Creat" Icon="Add" />
+        </CommandBar>
         <controls:MasterDetailsView
+            Grid.Row="1"
             x:Name="MasterDetailsViewControl"
             ItemsSource="{x:Bind ViewModel.TagTypes}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"

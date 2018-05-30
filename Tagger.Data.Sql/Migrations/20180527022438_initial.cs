@@ -64,6 +64,5 @@ namespace Tagger.Data.Sql.Migrations
             migrationBuilder.DropTable(
                 name: "TagTypes");
         }
-
     }
 }

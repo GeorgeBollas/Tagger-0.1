@@ -84,8 +84,11 @@ namespace Tagger.Services
 
         private async Task InitializeAsync()
         {
+
             await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync();
             await ThemeSelectorService.InitializeAsync();
+
+            WindowManagerService.Current.Initialize();
             await Task.CompletedTask;
         }
 
