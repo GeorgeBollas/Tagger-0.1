@@ -1,59 +1,19 @@
 ﻿using System;
-
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Tagger.Models;
 using Tagger.Services;
 using Windows.UI.Core;
 
 namespace Tagger.ViewModels
 {
-    public class EditTagTypeViewModel : ViewModelBase
+    public class EditTagTypeViewModel : EditableItemViewModelBase<TagTypeModel>
     {
 
         public EditTagTypeViewModel()
         {
         }
-
-        private int id;
-
-        public int Id
-        {
-            get { return id; }
-            set { Set(ref id, value); }
-        }
-
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { Set(ref name, value); }
-        }
-
-        private string description;
-
-        public string Description
-        {
-            get { return description; }
-            set { Set(ref description, value); }
-        }
-
-        private int minCount;
-
-        public int MinCount
-        {
-            get { return minCount; }
-            set { Set(ref minCount, value); }
-        }
-
-        private int maxCount;
-
-        public int MaxCount
-        {
-            get { return maxCount; }
-            set { Set(ref maxCount, value); }
-        }
-
-
 
         private ViewLifetimeControl _viewLifetimeControl;
 

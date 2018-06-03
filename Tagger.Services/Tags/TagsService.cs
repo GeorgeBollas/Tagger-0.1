@@ -20,24 +20,29 @@ namespace Tagger.Services
 
         public async Task<ServiceResponse<TagType>> CreateTagType(string name, string description, int minCount, int maxCount)
         {
-
-            var tt = new TagType()
-            {
-                Id = UIDGenerator.Next(1),
-                Name = name,
-                Description = description,
-                MinCount = minCount,
-                MaxCount = maxCount
-            };
-
-            tt.MarkModified();
-
             var response = new ServiceResponse<TagType>();
-            response.Messages.AddRange(ValidateTagType(tt));
 
             try
             {
+
+                var tt = new TagType()
+                {
+                    Id = UIDGenerator.Next(1),
+                    Name = name,
+                    Description = description,
+                    MinCount = minCount,
+                    MaxCount = maxCount
+                };
+
+                tt.MarkModified();
+
+                response.Messages.AddRange(ValidateTagType(tt));
+
                 await taggerDataContext.TagsRepository.InsertTagTypeAsync(tt);
+
+                await taggerDataContext.SaveChangesAsync();
+
+                response.ReturnValue = tt;
             }
             catch (Exception ex)
             {
@@ -50,10 +55,7 @@ namespace Tagger.Services
                 response.Messages.Add(m);
             }
 
-            return new ServiceResponse<TagType>()
-            {
-                ReturnValue = tt
-            };
+            return response;
         }
 
         private IEnumerable<ResponseMessage> ValidateTagType(TagType tt)
@@ -65,9 +67,9 @@ namespace Tagger.Services
         public async Task<IList<TagType>> GetTagTypesAsync()
         {
             return await taggerDataContext.TagsRepository.GetTagTypesAsync(new DataRequest<TagType>()
-                                                                                {
-                                                                                    Where = tt => tt.EntityState != EntityState.Deleted && tt.EntityState != EntityState.New
-                                                                                });
+            {
+                Where = tt => tt.EntityState != EntityState.Deleted && tt.EntityState != EntityState.New
+            });
         }
     }
 }

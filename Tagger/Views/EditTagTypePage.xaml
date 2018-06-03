@@ -4,26 +4,42 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:Tagger.ViewModels"
+      xmlns:controls="using:Tagger.Controls"
     DataContext="{Binding EditTagTypeViewModel, Source={StaticResource Locator}}"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="editTagType" x:DataType="vm:EditTagTypeViewModel">
+            <StackPanel Orientation="Vertical"
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.-->
+                <TextBox Text="{x:Bind Name, Mode=TwoWay}" PlaceholderText="Name" />
+                <TextBox Text="{x:Bind Description, Mode=TwoWay}" PlaceholderText="Description" />
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <my:RadNumericBox Minimum="0" Maximum="100" Value="{x:Bind MinCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Minimum" />
+                    <my:RadNumericBox Grid.Column="1" Minimum="0" Maximum="100" Value="{x:Bind MaxCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Maximum" />
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
     <Grid
         x:Name="ContentArea"
         Margin="{StaticResource MediumLeftRightMargin}">
-        <StackPanel Orientation="Vertical"
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
-            <TextBox Text="{x:Bind ViewModel.Name, Mode=TwoWay}" PlaceholderText="Name" />
-            <TextBox Text="{x:Bind ViewModel.Description, Mode=TwoWay}" PlaceholderText="Description" />
-            <Grid HorizontalAlignment="Stretch">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <my:RadNumericBox Minimum="0" Maximum="100" Value="{x:Bind ViewModel.MinCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Minimum" />
-                <my:RadNumericBox Grid.Column="1" Minimum="0" Maximum="100" Value="{x:Bind ViewModel.MaxCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Maximum" />
-            </Grid>
-        </StackPanel>
+        <controls:Details x:Name="details" Margin="6" 
+                          DetailsContent="{x:Bind ViewModel}"
+                          DetailsTemplate="{StaticResource editTagType}"
+                          CanGoBack="{x:Bind ViewModel.CanGoBack}"
+                          IsEditMode="{x:Bind ViewModel.IsEditMode, Mode=OneWay}"
+                          BackCommand="{x:Bind ViewModel.BackCommand}"
+                          EditCommand="{x:Bind ViewModel.EditCommand}"
+                          DeleteCommand="{x:Bind ViewModel.DeleteCommand}"
+                          SaveCommand="{x:Bind ViewModel.SaveCommand}"
+                          CancelCommand="{x:Bind ViewModel.CancelCommand}" />
     </Grid>
 </Page>
