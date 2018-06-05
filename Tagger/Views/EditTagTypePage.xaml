@@ -15,15 +15,15 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                 <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
-                <TextBox Text="{x:Bind Name, Mode=TwoWay}" PlaceholderText="Name" />
-                <TextBox Text="{x:Bind Description, Mode=TwoWay}" PlaceholderText="Description" />
+                <TextBox Text="{x:Bind EditableItem.Name, Mode=TwoWay}" PlaceholderText="Name" />
+                <TextBox Text="{x:Bind EditableItem.Description, Mode=TwoWay}" PlaceholderText="Description" />
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <my:RadNumericBox Minimum="0" Maximum="100" Value="{x:Bind MinCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Minimum" />
-                    <my:RadNumericBox Grid.Column="1" Minimum="0" Maximum="100" Value="{x:Bind MaxCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Maximum" />
+                    <my:RadNumericBox Minimum="0" Maximum="100" Value="{x:Bind EditableItem.MinCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Minimum" />
+                    <my:RadNumericBox Grid.Column="1" Minimum="0" Maximum="100" Value="{x:Bind EditableItem.MaxCount, Mode=TwoWay}" ValueFormat="{}{0,0:N0}" Watermark="Maximum" />
                 </Grid>
             </StackPanel>
         </DataTemplate>

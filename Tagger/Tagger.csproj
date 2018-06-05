@@ -158,6 +158,7 @@
     <Compile Include="Models\Common\DragDropData.cs" />
     <Compile Include="Models\Common\DragDropStartingData.cs" />
     <Compile Include="Models\Common\EditableItemModel.cs" />
+    <Compile Include="Models\Common\ValidationResult.cs" />
     <Compile Include="Models\SampleOrder.cs" />
     <Compile Include="Models\TagTypeModel.cs" />
     <Compile Include="Services\ActivationService.cs" />

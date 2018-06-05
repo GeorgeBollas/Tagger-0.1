@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tagger.Models.Common;
 
 namespace Tagger.Models
 {
-    public class TagTypeModel:ObservableObject
+    public class TagTypeModel:EditableItemModel
     {
         private int id;
 
@@ -49,5 +50,21 @@ namespace Tagger.Models
             set { Set(ref maxCount, value); }
         }
 
+        public override void Merge(object item)
+        {
+            if (!(item is TagTypeModel))
+                throw new InvalidOperationException();
+
+            Merge(item);
+        }
+
+        public void Merge(TagTypeModel item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+            Description = item.Description;
+            MinCount = item.MinCount;
+            MaxCount = item.MaxCount;
+        }
     }
 }
