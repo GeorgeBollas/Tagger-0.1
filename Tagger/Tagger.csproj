@@ -147,6 +147,7 @@
       <DependentUpon>DetailToolbar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbars\ToolbarCommon.cs" />
+    <Compile Include="Converters\UpDownToIntConverter.cs" />
     <Compile Include="Extensions\AnimationExtensions.cs" />
     <Compile Include="Extensions\ICommandExtensions.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
@@ -157,10 +158,10 @@
     <Compile Include="Models\Common\DragDropCompletedData.cs" />
     <Compile Include="Models\Common\DragDropData.cs" />
     <Compile Include="Models\Common\DragDropStartingData.cs" />
-    <Compile Include="Models\Common\EditableItemModel.cs" />
-    <Compile Include="Models\Common\ValidationResult.cs" />
+    <Compile Include="Models\Common\InputValidationError.cs" />
+    <Compile Include="Models\Common\ObservableModel.cs" />
     <Compile Include="Models\SampleOrder.cs" />
-    <Compile Include="Models\TagTypeModel.cs" />
+    <Compile Include="Models\TagTypeDetailsModel.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
     <Compile Include="Services\BackgroundTaskService.cs" />
@@ -191,17 +192,19 @@
     <Compile Include="Tools\ElementSet\ElementSet.Events.cs" />
     <Compile Include="Tools\ElementSet\ElementSet.Methods.cs" />
     <Compile Include="Tools\ElementSet\ElementSet.Properties.cs" />
-    <Compile Include="ViewModels\Common\EditableItemViewModelBase.cs" />
+    <Compile Include="ViewModels\Common\GenericDetailsViewModel.cs" />
     <Compile Include="ViewModels\Common\EditModeMessage.cs" />
+    <Compile Include="ViewModels\Common\TaggerViewModelBase.cs" />
     <Compile Include="ViewModels\Tags\EditTagTypeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Tags\TagManagerViewModel.cs" />
+    <Compile Include="ViewModels\Tags\TagTypeDetailsViewModel.cs" />
     <Compile Include="ViewModels\UriSchemeExampleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
-    <Compile Include="Views\EditTagTypePage.xaml.cs">
+    <Compile Include="Views\Tags\EditTagTypePage.xaml.cs">
       <DependentUpon>EditTagTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FirstRunDialog.xaml.cs">
@@ -224,6 +227,9 @@
     </Compile>
     <Compile Include="Views\Tags\TagManagerPage.xaml.cs">
       <DependentUpon>TagManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tags\TagTypeDetailsControl.xaml.cs">
+      <DependentUpon>TagTypeDetailsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UriSchemeExamplePage.xaml.cs">
       <DependentUpon>UriSchemeExamplePage.xaml</DependentUpon>
@@ -307,7 +313,39 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Views\EditTagTypePage.xaml">
+    <Page Include="Themes\Controls\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\FormAutoSuggestBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\FormCalendarDatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\FormComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\FormTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\Section.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ThemeDictionaries.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tags\EditTagTypePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -338,6 +376,10 @@
     <Page Include="Views\Tags\TagManagerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tags\TagTypeDetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UriSchemeExamplePage.xaml">
       <Generator>MSBuild:Compile</Generator>

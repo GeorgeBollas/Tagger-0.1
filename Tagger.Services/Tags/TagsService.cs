@@ -18,44 +18,33 @@ namespace Tagger.Services
             this.taggerDataContext = taggerDataContext;
         }
 
-        public async Task<ServiceResponse<TagType>> CreateTagType(string name, string description, int minCount, int maxCount)
+        public async Task<TagType> CreateTagTypeAsync(string name, string description, int minCount, int maxCount)
         {
-            var response = new ServiceResponse<TagType>();
-
             try
             {
 
                 var tt = new TagType()
                 {
-                    Id = UIDGenerator.Next(1),
                     Name = name,
                     Description = description,
                     MinCount = minCount,
                     MaxCount = maxCount
                 };
 
-                tt.MarkModified();
-
-                response.Messages.AddRange(ValidateTagType(tt));
+                tt.Initialize(UIDGenerator.Next(1));
 
                 await taggerDataContext.TagsRepository.InsertTagTypeAsync(tt);
 
                 await taggerDataContext.SaveChangesAsync();
 
-                response.ReturnValue = tt;
+                return tt;
             }
             catch (Exception ex)
             {
-                var m = new ResponseMessage()
-                {
-                    MessageId = ResponseMessage.ExceptionMessageId,
-                    Message = ex.Message,
-                    ResultLevel = MessageLevel.Critical,
-                };
-                response.Messages.Add(m);
+                //todo log error
+                throw;
             }
 
-            return response;
         }
 
         private IEnumerable<ResponseMessage> ValidateTagType(TagType tt)
@@ -70,6 +59,38 @@ namespace Tagger.Services
             {
                 Where = tt => tt.EntityState != EntityState.Deleted && tt.EntityState != EntityState.New
             });
+        }
+
+        public async Task<TagType> UpdateTagTypeAsync(long id, string name, string description, int minCount = 0, int maxCount = 9999999)
+        {
+
+            //todo validate
+
+            var tt = await taggerDataContext.TagsRepository.GetTagTypeAsync(id);
+
+            if (tt == null)
+                return null;
+
+            tt.Name = name;
+            tt.Description = description;
+            tt.MinCount = minCount;
+            tt.MaxCount = maxCount;
+
+            tt.MarkModified();
+
+            try
+            {
+                taggerDataContext.TagsRepository.UpdateTagType(tt);
+
+                await taggerDataContext.SaveChangesAsync();
+
+                return tt;
+            }
+            catch (Exception ex)
+            {
+                //todo log the error
+                throw;
+            }
         }
     }
 }

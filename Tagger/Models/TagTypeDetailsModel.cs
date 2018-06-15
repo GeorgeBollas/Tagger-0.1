@@ -1,14 +1,19 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Tagger.Models.Common;
 
 namespace Tagger.Models
 {
-    public class TagTypeModel:EditableItemModel
+    public class TagTypeDetailsModel : ObservableModel
+
     {
         private int id;
 
@@ -20,11 +25,22 @@ namespace Tagger.Models
 
         private string name;
 
+        [Required]
+        [MinLength(4)]
         public string Name
         {
             get { return name; }
-            set { Set(ref name, value); }
+            set
+            {
+                //todo move this to base Set statement
+                // may already to comparer
+                if (!EqualityComparer<string>.Default.Equals(name, value))
+                    Validate(value, nameof(Name));
+
+                Set(ref name, value);
+            }
         }
+
 
         private string description;
 
@@ -34,31 +50,33 @@ namespace Tagger.Models
             set { Set(ref description, value); }
         }
 
-        private double minCount;
-
-        public double MinCount
+        private int minCount;
+        public int MinCount
         {
             get { return minCount; }
             set { Set(ref minCount, value); }
         }
 
-        private double maxCount;
+        private int maxCount;
 
-        public double MaxCount
+
+        public int MaxCount
         {
             get { return maxCount; }
             set { Set(ref maxCount, value); }
         }
 
+        public bool IsNew => Id <= 0;
+
         public override void Merge(object item)
         {
-            if (!(item is TagTypeModel))
+            if (!(item is TagTypeDetailsModel))
                 throw new InvalidOperationException();
 
-            Merge(item);
+            Merge(item as TagTypeDetailsModel);
         }
 
-        public void Merge(TagTypeModel item)
+        public void Merge(TagTypeDetailsModel item)
         {
             Id = item.Id;
             Name = item.Name;
@@ -66,5 +84,11 @@ namespace Tagger.Models
             MinCount = item.MinCount;
             MaxCount = item.MaxCount;
         }
+
+        public override void RaisePropertiesChanged()
+        {
+            //todo do we need this as each item will raise chang
+        }
     }
+
 }

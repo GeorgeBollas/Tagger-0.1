@@ -3,7 +3,7 @@
 using CommonServiceLocator;
 
 using GalaSoft.MvvmLight.Ioc;
-
+using GalaSoft.MvvmLight.Views;
 using Tagger.Data;
 using Tagger.Data.Sql;
 using Tagger.Services;
@@ -22,6 +22,7 @@ namespace Tagger.ViewModels
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<ITaggerDataContext, TaggerDataContext>();
+            SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<ITagsService, TagsService>();
 
 

@@ -8,6 +8,7 @@ namespace Tagger.Services
     {
         Task<IList<TagType>> GetTagTypesAsync();
 
-        Task<ServiceResponse<TagType>> CreateTagType(string name, string description, int minCount = 0, int maxCount = 9999999);
+        Task<TagType> CreateTagTypeAsync(string name, string description, int minCount = 0, int maxCount = 9999999);
+        Task<TagType> UpdateTagTypeAsync(long id, string name, string description, int minCount = 0, int maxCount = 9999999);
     }
 }

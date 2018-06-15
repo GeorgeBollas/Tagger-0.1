@@ -24,11 +24,9 @@ namespace Tagger.Entities
         [Required]
         public DateTime Modified { get; set; }
 
-        public void Initialize(int id)
+        public void Initialize(long id)
         {
             Id = id;
-
-
             Guid = Guid.NewGuid();
 
             var now = DateTime.Now;

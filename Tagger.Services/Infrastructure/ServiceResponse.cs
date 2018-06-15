@@ -16,6 +16,9 @@ namespace Tagger.Services
         {
             get
             {
+                if (Messages.Count == 0)
+                    return MessageLevel.Success;
+
                 return Messages.Max(m => m.ResultLevel);
             }
         }

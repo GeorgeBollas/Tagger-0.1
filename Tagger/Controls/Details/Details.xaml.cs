@@ -45,7 +45,7 @@ namespace Tagger.Controls
             UpdateEditMode();
         }
 
-        #region CanGoBack*
+        #region CanGoBack
         public bool CanGoBack
         {
             get { return (bool)GetValue(CanGoBackProperty); }
@@ -61,7 +61,7 @@ namespace Tagger.Controls
         public static readonly DependencyProperty CanGoBackProperty = DependencyProperty.Register(nameof(CanGoBack), typeof(bool), typeof(Details), new PropertyMetadata(false, CanGoBackChanged));
         #endregion
 
-        #region IsEditMode*
+        #region IsEditMode
         public bool IsEditMode
         {
             get { return (bool)GetValue(IsEditModeProperty); }

@@ -11,7 +11,7 @@ namespace Tagger.Data
     {
         #region Tag Types
 
-        Task<TagType> GetTagTypeAsync(long id, bool includeTags);
+        Task<TagType> GetTagTypeAsync(long id, bool includeTags = false);
 
         Task<IList<TagType>> GetTagTypesAsync(DataRequest<TagType> request = null, bool includeTags = false, int skip = 0, int take = 100000);
         

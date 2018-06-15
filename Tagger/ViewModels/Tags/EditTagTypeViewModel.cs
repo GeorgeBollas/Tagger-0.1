@@ -1,21 +1,26 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using Tagger.Models;
 using Tagger.Services;
 using Windows.UI.Core;
 
 namespace Tagger.ViewModels
 {
-    public class EditTagTypeViewModel : EditableItemViewModelBase<TagTypeModel>
+    public class EditTagTypeViewModel 
     {
 
-        public EditTagTypeViewModel()
+        public EditTagTypeViewModel(IDialogService dialogService, ITagsService tagsService)
         {
+            TagTypeDetailsViewModel = new TagTypeDetailsViewModel(dialogService, tagsService);
         }
 
         private ViewLifetimeControl _viewLifetimeControl;
+
+        public TagTypeDetailsViewModel TagTypeDetailsViewModel { get; set; }
 
         public void Initialize(ViewLifetimeControl viewLifetimeControl)
         {

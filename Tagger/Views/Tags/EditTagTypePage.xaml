@@ -1,0 +1,15 @@
+﻿<Page x:Class="Tagger.Views.EditTagTypePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my1="using:Tagger.Views.Tags"
+    DataContext="{Binding EditTagTypeViewModel, Source={StaticResource Locator}}"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="ContentArea"
+        Margin="{StaticResource MediumLeftRightMargin}">
+        <my1:TagTypeDetailsControl ViewModel="{x:Bind ViewModel.TagTypeDetailsViewModel, Mode=OneWay}" />
+    </Grid>
+</Page>
