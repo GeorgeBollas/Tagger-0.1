@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -22,8 +23,17 @@ namespace Tagger.ViewModels
 
             this.Item = new TagTypeDetailsModel() { Id = 1, Name = "A" };
             this.EditableItem = new TagTypeDetailsModel() { Name = "b" };
+
+            Errors = new List<InputValidationError>()
+            {
+                new InputValidationError() { ErrorMessage="error" },
+                new InputValidationError() { ErrorMessage="error2" }
+            };
+
             IsEditMode = true;
         }
+
+        public List<InputValidationError> Errors { get; set; }
 
         private ViewLifetimeControl _viewLifetimeControl;
 
@@ -54,7 +64,7 @@ namespace Tagger.ViewModels
                     await tagsService.UpdateTagTypeAsync(model.Id, model.Name, model.Description, model.MinCount, model.MaxCount);
                 //todo fix this, handle errors, validation etc
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
                 //todo show error to user
                 return false;

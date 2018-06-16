@@ -30,17 +30,7 @@
 
                 <ResourceDictionary Source="/Styles/Page.xaml"/>
 
-                <ResourceDictionary>
-                    <DataTemplate x:Key="validationTemplate">
-                        <ItemsControl ItemsSource="{Binding Path=InputValidation.Errors}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate x:DataType="common:InputValidationError">
-                                    <TextBlock Text="{Binding ErrorMessage}" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </DataTemplate>
-                </ResourceDictionary>
+  
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

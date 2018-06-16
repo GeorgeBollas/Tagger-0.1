@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Tagger.Controls"
+    xmlns:models="using:Tagger.Models">
+
+    <Style TargetType="controls:ValidationErrors">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ValidationErrors">
+                    <StackPanel Height="100px" Orientation="Vertical">
+                        <TextBlock Text="hello"/>
+                        <ListBox ItemsSource="{TemplateBinding Errors}">
+                            <ListBox.ItemTemplate>
+                                <!--<DataTemplate x:DataType="models:InputValidationError">-->
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=ErrorMessage}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

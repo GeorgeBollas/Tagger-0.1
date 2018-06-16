@@ -157,6 +157,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Border x:Name="BorderElement"
                             Grid.Row="1"
@@ -190,8 +191,8 @@
                             IsTabStop="False"
                             AutomationProperties.AccessibilityView="Raw"
                             ZoomMode="Disabled" />
-                        
-                        <!--Display content with formatted text-->                  
+
+                        <!--Display content with formatted text-->
                         <Border x:Name="DisplayContent" Grid.Row="2" Background="White" BorderThickness="{TemplateBinding BorderThickness}">
                             <TextBlock Padding="{TemplateBinding Padding}"
                                        Text="{TemplateBinding FormattedText}"
