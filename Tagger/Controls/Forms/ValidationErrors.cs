@@ -28,7 +28,7 @@ namespace Tagger.Controls
             var ve = d as ValidationErrors;
 
             if (ve != null)
-                ve.HasErrors = ve.Errors.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+                ve.HasErrors = ve.Errors != null && ve.Errors.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
 
         }
 

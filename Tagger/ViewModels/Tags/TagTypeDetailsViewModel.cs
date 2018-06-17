@@ -24,11 +24,11 @@ namespace Tagger.ViewModels
             this.Item = new TagTypeDetailsModel() { Id = 1, Name = "A" };
             this.EditableItem = new TagTypeDetailsModel() { Name = "b" };
 
-            Errors = new List<InputValidationError>()
-            {
-                new InputValidationError() { ErrorMessage="error" },
-                new InputValidationError() { ErrorMessage="error2" }
-            };
+            //Errors = new List<InputValidationError>()
+            //{
+            //    new InputValidationError() { ErrorMessage="error" },
+            //    new InputValidationError() { ErrorMessage="error2" }
+            //};
 
             IsEditMode = true;
         }
