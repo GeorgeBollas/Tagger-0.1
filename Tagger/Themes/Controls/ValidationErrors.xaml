@@ -5,12 +5,13 @@
     xmlns:models="using:Tagger.Models">
 
     <Style TargetType="controls:ValidationErrors">
+        <!--<Setter Property="Visibility" Value="Collapesed" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:ValidationErrors">
-                    <StackPanel Height="100px" Orientation="Vertical">
+                    <StackPanel x:Name="ErrorList" Height="100px" Orientation="Vertical" Background="Aquamarine" Visibility="{TemplateBinding HasErrors}">
                         <TextBlock Text="hello"/>
-                        <ListBox ItemsSource="{TemplateBinding Errors}">
+                        <ListBox ItemsSource="{TemplateBinding Errors}" Background="Transparent">
                             <ListBox.ItemTemplate>
                                 <!--<DataTemplate x:DataType="models:InputValidationError">-->
                                 <DataTemplate>
