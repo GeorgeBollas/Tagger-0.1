@@ -49,6 +49,13 @@ namespace Tagger.ViewModels
             }
         }
 
+        private IEnumerable<InputValidationError> errors;
+        public IEnumerable<InputValidationError> Errors
+        {
+            get { return errors; }
+            set { Set(ref errors, value); }
+        }
+
         private TModel editableItem;
         public TModel EditableItem
         {

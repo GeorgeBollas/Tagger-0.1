@@ -8,6 +8,7 @@ namespace Tagger.Models
 {
     public class InputValidationError
     {
+        public string PropertyName { get; set; }
         public string ErrorMessage { get; set; }
     }
 }

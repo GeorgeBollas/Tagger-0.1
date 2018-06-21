@@ -10,7 +10,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:ValidationErrors">
                     <StackPanel x:Name="ErrorList" Height="100px" Orientation="Vertical" Background="Aquamarine" Visibility="{TemplateBinding HasErrors}">
-                        <TextBlock Text="hello"/>
+                        <ContentPresenter />
                         <ListBox ItemsSource="{TemplateBinding Errors}" Background="Transparent">
                             <ListBox.ItemTemplate>
                                 <!--<DataTemplate x:DataType="models:InputValidationError">-->

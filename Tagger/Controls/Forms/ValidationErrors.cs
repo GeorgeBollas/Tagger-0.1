@@ -4,17 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tagger.Models;
+using Tagger.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Tagger.Controls
 {
-    public class ValidationErrors : Control
+    public class ValidationErrors : ContentControl
     {
         public ValidationErrors()
         {
             DefaultStyleKey = typeof(ValidationErrors);
+
+            SetAttributeName();
         }
+
+        private void SetAttributeName()
+        {
+            //todo figure out how to subscribe to the changes in the Errors collection to update each
+            //todo add dp and if set just use it
+
+            // 1. find child control
+            // 2. get name of control and use as name of property
+            var prop = "";
+            // 3. get view model (DataContext)
+
+            var errors = typeof(GenericDetailsViewModel<>).GetProperty("Errors").GetValue(this) as IEnumerable<InputValidationError>;
+
+            // 4. get the Errors for that attribute
+            var propErrors = errors.Where(p => p.PropertyName == prop);
+
+            throw new NotImplementedException();
+        }
+
         public List<InputValidationError> Errors
         {
             get { return (List<InputValidationError>)GetValue(ErrorsProperty); }
